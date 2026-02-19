@@ -1,12 +1,15 @@
 class Solution:
     def maxCoins(self, piles: List[int]) -> int:
-        n = len(piles)//3
-        piles = list(reversed(sorted(piles)))
-      
-        total = 0
-        for i in range(1,len(piles)-n,2):
-            total += piles[i]
-        return total 
+        result = 0
+        piles = sorted(piles , reverse= True)
+        j , k =  1 , len(piles)-1
+        while j < k :
+            result += piles[j]
+            j += 2
+            k -= 1
+        return result 
+
+        
 
 
         
