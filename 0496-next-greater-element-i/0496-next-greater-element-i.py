@@ -8,4 +8,4 @@ class Solution:
                 nextgreater[stack.pop()] = num
             stack.append(num)
         
-        return [nextgreater[num] for num in num1]
+        return [nextgreater[num] for num in nums1]
