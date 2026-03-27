@@ -1,11 +1,12 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        stack = []
-        nextgreater = defaultdict(lambda:-1)
-
-        for num in nums2:
-            while stack and stack[-1] < num:
-                nextgreater[stack.pop()] = num
-            stack.append(num)
-        
-        return [nextgreater[num] for num in nums1]
+        ans = []
+        for num in nums1:
+            index = nums2.index(num)
+            found = -1
+            for i in range(index + 1 , len(nums2)):
+                if nums2[i] > num :
+                    found = nums2[i]
+                    break 
+            ans.append(found)
+        return ans 
