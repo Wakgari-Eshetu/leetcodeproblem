@@ -1,12 +1,17 @@
 class Solution:
-    def combine(self, n: int, k: int ) -> List[List[int]]: 
-        list_of_numbers = []
-        for x in range(1, n+1):
-            list_of_numbers.append(x)
+    def combine(self, n, k):
+        result = []
         
-        ans = []
-        for c in combinations(list_of_numbers , k):
-            ans.append(c)
+        def backtrack(start, path):
+            # base case
+            if len(path) == k:
+                result.append(path[:])
+                return
+            
+            for i in range(start, n + 1):
+                path.append(i)              
+                backtrack(i + 1, path)     
+                path.pop()                 
         
-        return ans
-              
+        backtrack(1, [])
+        return result
